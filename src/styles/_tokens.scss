@@ -1,0 +1,71 @@
+// =============================================================================
+// Design tokens — auto-imported into every *.module.scss via next.config.ts.
+// Warm, editorial palette suited to wedding photographers (not a tech dashboard).
+// =============================================================================
+
+// ---- Color ----  Editorial, warm, photography-led. One confident accent.
+$ink:        #161310;   // warm near-black
+$ink-soft:   #574e44;   // secondary
+$muted:      #8f8475;   // captions, labels
+$line:       #d3ccc0;   // hairlines
+$ivory:      #e7e3dd;   // warm paper (v2)
+$cream:      #dedad2;   // deeper paper / wells
+$card:       #fffdf9;   // raised surfaces
+$clay:       #d8492c;   // accent — ember (v2)
+$clay-deep:  #b8371f;
+$sage:       #5f6b52;   // secondary — deep olive
+$gold:       #c0913a;   // warm gold detail
+$blush:      #ecdccf;   // soft wash
+
+// ---- Typography ----
+$font-display: var(--font-display), "Helvetica Neue", Arial, sans-serif;
+$font-sans:    var(--font-sans), system-ui, -apple-system, sans-serif;
+$font-mono:    var(--font-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+$fs-xs:   0.78rem;
+$fs-sm:   0.9rem;
+$fs-base: 1rem;
+$fs-md:   1.2rem;
+$fs-lg:   1.5rem;
+$fs-xl:   2rem;
+$fs-2xl:  2.75rem;
+$fs-3xl:  3.75rem;
+$fs-4xl:  clamp(3rem, 7vw, 5.5rem);
+
+// ---- Spacing (4pt scale) ----
+$s1: 4px;  $s2: 8px;  $s3: 12px; $s4: 16px; $s5: 24px;
+$s6: 32px; $s7: 48px; $s8: 64px; $s9: 96px; $s10: 128px;
+
+// ---- Radius / shadow ----
+$r-sm: 6px; $r-md: 12px; $r-lg: 20px; $r-pill: 999px;
+$shadow-sm: 0 1px 2px rgba(28,26,23,.06), 0 1px 3px rgba(28,26,23,.05);
+$shadow-md: 0 8px 30px rgba(28,26,23,.08);
+$shadow-lg: 0 24px 60px rgba(28,26,23,.12);
+
+// ---- Mixins ----
+@mixin container($max: 1140px) {
+  width: 100%;
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: $s5;
+}
+
+@mixin focus-ring {
+  outline: none;
+  &:focus-visible {
+    box-shadow: 0 0 0 2px $ivory, 0 0 0 4px $clay;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) { @content; }
+}
+
+@mixin eyebrow {
+  font-family: $font-sans;
+  font-size: $fs-xs;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $clay;
+  font-weight: 600;
+}

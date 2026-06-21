@@ -1,0 +1,20 @@
+.wrap { min-height: 100vh; display: grid; place-items: center; padding: $s6;
+  background: radial-gradient(800px 400px at 50% -10%, $blush, $ivory 70%); }
+.card { width: 100%; max-width: 560px; background: $card; border: 1px solid $line;
+  border-radius: $r-lg; box-shadow: $shadow-lg; padding: $s8; }
+.eyebrow { @include eyebrow; margin: $s6 0 $s2; }
+.title { font-size: $fs-2xl; }
+.venue { color: $muted; margin: $s2 0 0; }
+.intro { color: $ink-soft; margin: $s4 0 $s6; }
+.form { display: flex; flex-direction: column; gap: $s4; }
+.row { display: grid; gap: $s4; @media (min-width: 480px){ grid-template-columns: 1fr 1fr; } }
+.field { display: flex; flex-direction: column; gap: $s2; }
+.label { font-size: $fs-sm; font-weight: 600; color: $ink-soft; }
+.textarea { font: inherit; padding: $s3 $s4; border: 1px solid $line; border-radius: $r-md; background: #fff; resize: vertical; @include focus-ring; }
+.checks { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: $s3;
+  label { display: flex; align-items: center; gap: $s3; font-size: $fs-sm; color: $ink-soft; }
+  input { width: 18px; height: 18px; accent-color: $clay; }
+}
+.err { color: $clay-deep; font-size: $fs-sm; margin: 0; }
+.done { text-align: center; padding: $s7 0; }
+.check { width: 56px; height: 56px; border-radius: 50%; background: $sage; color: #fff; display: grid; place-items: center; font-size: $fs-lg; margin: 0 auto $s5; }

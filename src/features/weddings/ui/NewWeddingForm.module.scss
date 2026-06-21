@@ -1,0 +1,3 @@
+.form { display: flex; flex-direction: column; gap: $s4; }
+.row { display: grid; gap: $s4; @media (min-width: 520px){ grid-template-columns: 1fr 1fr; } }
+.err { color: $clay-deep; font-size: $fs-sm; margin: 0; }

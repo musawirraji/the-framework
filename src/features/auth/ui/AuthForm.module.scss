@@ -1,0 +1,24 @@
+.form { display: flex; flex-direction: column; gap: $s4; }
+.field { display: flex; flex-direction: column; gap: $s2; }
+.label { font-size: $fs-sm; font-weight: 600; color: $ink-soft; }
+.input {
+  width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; /* 16px avoids iOS zoom */
+  padding: $s3 $s4; border: 1px solid $line; border-radius: $r-md;
+  background: #fff; color: $ink; transition: border-color .15s ease, box-shadow .15s ease;
+  @include focus-ring;
+  &[aria-invalid="true"] { border-color: $clay; }
+  &::placeholder { color: $muted; }
+}
+.inputWrap { position: relative; display: block; }
+.inputPw { padding-right: 44px; }
+.toggle {
+  position: absolute; top: 50%; right: 6px; transform: translateY(-50%);
+  display: grid; place-items: center; width: 34px; height: 34px;
+  border: 0; background: none; cursor: pointer; color: $muted; border-radius: 6px;
+  &:hover { color: $ink; }
+  &:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px $clay; }
+  svg { width: 18px; height: 18px; }
+}
+.err { color: $clay-deep; font-size: $fs-xs; }
+.formErr { color: $clay-deep; font-size: $fs-sm; background: rgba(181,101,74,.08);
+  border: 1px solid rgba(181,101,74,.25); border-radius: $r-md; padding: $s3 $s4; margin: 0; }

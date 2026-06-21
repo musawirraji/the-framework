@@ -1,0 +1,40 @@
+.card {
+  background: $card;
+  border: 1px solid $line;
+  border-radius: $r-lg;
+  box-shadow: $shadow-lg;
+  padding: $s5;
+  width: 100%;
+}
+.head { display: flex; justify-content: space-between; align-items: flex-start; gap: $s4; margin-bottom: $s4; }
+.kicker { @include eyebrow; margin: 0 0 $s1; }
+.couple { font-size: $fs-lg; }
+.sub { color: $muted; font-size: $fs-sm; margin: $s1 0 0; }
+.badge {
+  font-size: $fs-xs; font-weight: 600; color: $sage;
+  border: 1px solid rgba(111,123,99,.35); border-radius: $r-pill;
+  padding: 4px 10px; white-space: nowrap;
+}
+.list { list-style: none; margin: 0; padding: 0; }
+.row {
+  display: grid;
+  grid-template-columns: 64px 22px 1fr;
+  align-items: center;
+  gap: $s3;
+  padding: $s3 0;
+  border-top: 1px solid $line;
+  &:first-child { border-top: 0; }
+}
+.time { font-variant-numeric: tabular-nums; font-size: $fs-sm; color: $ink-soft; font-weight: 600; }
+
+
+
+
+
+
+
+.body { display: flex; justify-content: space-between; align-items: baseline; gap: $s3; min-width: 0; }
+.evtTitle { font-size: $fs-sm; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dur { font-size: $fs-xs; color: $muted; white-space: nowrap; }
+
+.ico { color: $clay; svg { width: 18px; height: 18px; display: block; } }

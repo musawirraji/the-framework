@@ -1,0 +1,27 @@
+.back { color: $ink-soft; font-size: $fs-sm; &:hover { color: $ink; } }
+.header { margin: $s4 0 $s7; }
+.title { font-size: $fs-2xl; }
+.meta { color: $muted; margin-top: $s2; }
+.grid { display: grid; gap: $s6; align-items: start; @media (min-width: 920px){ grid-template-columns: 1fr 1fr; } }
+.col { display: flex; flex-direction: column; gap: $s5; }
+.block { background: $card; border: 1px solid $line; border-radius: $r-lg; padding: $s6; box-shadow: $shadow-sm; }
+.h2 { font-size: $fs-md; }
+.p { color: $ink-soft; font-size: $fs-sm; margin: $s2 0 $s5; }
+.hint { color: $muted; font-size: $fs-xs; margin: $s3 0 0; }
+.awaiting { color: $muted; font-size: $fs-sm; margin: $s4 0 0; }
+
+.copyRow { display: flex; flex-direction: column; gap: $s2; }
+.copyLabel { font-size: $fs-xs; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: $muted; }
+.copyBox { display: flex; align-items: center; gap: $s2; border: 1px solid $line; border-radius: $r-md; padding: $s2 $s2 $s2 $s3; background: $ivory; }
+.url { font-size: $fs-xs; color: $ink-soft; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.copyBtn { background: $ink; color: #fff; border: 0; border-radius: $r-sm; padding: $s2 $s3; font-size: $fs-xs; font-weight: 600; cursor: pointer; @include focus-ring; }
+
+.intakeSummary { margin-top: $s5; border-top: 1px solid $line; padding-top: $s5;
+  dl { display: grid; grid-template-columns: 1fr 1fr; gap: $s3 $s5; margin: $s3 0 0; }
+  dt { font-size: $fs-xs; color: $muted; text-transform: uppercase; letter-spacing: .08em; }
+  dd { margin: 2px 0 0; font-size: $fs-sm; font-weight: 500; }
+}
+.received { display: inline-block; font-size: $fs-xs; font-weight: 600; color: #fff; background: $sage; padding: 3px 10px; border-radius: $r-pill; }
+.notes { margin: $s4 0 0; color: $ink-soft; font-size: $fs-sm; }
+.publish { margin-top: $s4; }
+.placeholder { border: 1px dashed $line; border-radius: $r-lg; padding: $s9 $s6; text-align: center; color: $muted; }

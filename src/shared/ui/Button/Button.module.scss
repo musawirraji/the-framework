@@ -1,0 +1,35 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $s2;
+  border: 1px solid transparent;
+  border-radius: $r-pill;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+  @include focus-ring;
+  &:disabled { opacity: .55; cursor: not-allowed; }
+}
+.md { padding: $s3 $s5; }
+.lg { padding: $s4 $s7; font-size: $fs-base; }
+
+.primary {
+  background: $clay;
+  color: #fff;
+  box-shadow: $shadow-sm;
+  &:hover:not(:disabled) { background: $clay-deep; transform: translateY(-1px); box-shadow: $shadow-md; }
+}
+.outline {
+  background: transparent;
+  color: $ink;
+  border-color: $line;
+  &:hover:not(:disabled) { border-color: $ink; }
+}
+.ghost {
+  background: transparent;
+  color: $ink-soft;
+  &:hover:not(:disabled) { color: $ink; }
+}

@@ -1,0 +1,53 @@
+// Mobile-first. Phone = a single centered column (no grid tracks to overflow).
+// Desktop (>=920) adds the photo panel beside the form.
+
+.wrap {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.aside { display: none; } // hidden on mobile
+
+.panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 6vw, 48px);
+}
+
+.box {
+  width: 100%;
+  max-width: 420px;
+  min-width: 0;
+}
+
+.title { font-size: clamp(1.8rem, 7vw, 2.6rem); line-height: 1.1; }
+.subtitle { color: $ink-soft; margin: $s3 0 $s6; font-size: $fs-sm; }
+.footer { margin-top: $s5; color: $ink-soft; font-size: $fs-sm; text-align: center;
+  a { color: $clay; font-weight: 600; } }
+
+// ---- desktop: bring in the photo panel ----
+@media (min-width: 920px) {
+  .wrap { flex-direction: row; }
+  .aside {
+    display: flex; flex: 1 1 50%; min-width: 0;
+    flex-direction: column; justify-content: space-between;
+    padding: clamp(32px, 4vw, 64px); color: $ivory; position: relative; overflow: hidden;
+    background-image:
+      linear-gradient(180deg, rgba(22,19,16,.45) 0%, rgba(22,19,16,.35) 45%, rgba(22,19,16,.8) 100%),
+      url("/marketing/gallery-4.jpg");
+    background-size: cover; background-position: center;
+  }
+  .panel { flex: 1 1 50%; }
+}
+
+.quote { position: relative; max-width: 40ch;
+  p { font-family: $font-display; font-weight: 600; font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.2;
+    text-transform: uppercase; letter-spacing: -0.01em; }
+  span { color: rgba(250,246,240,.7); font-size: $fs-xs; text-transform: uppercase; letter-spacing: 0.14em; font-family: $font-mono; }
+}

@@ -1,0 +1,31 @@
+.wrap { max-width: 680px; margin: 0 auto; padding: $s8 $s5 $s9; }
+.hero { text-align: center; margin-bottom: $s8; }
+.eyebrow { @include eyebrow; }
+.couple { font-size: $fs-3xl; margin-top: $s3; }
+.date { color: $ink-soft; margin: $s4 0 0; font-size: $fs-md; }
+.venue { color: $muted; margin: $s1 0 0; }
+.timeline { list-style: none; margin: 0; padding: 0; }
+.event { display: grid; grid-template-columns: 80px 40px 1fr; align-items: start; gap: $s3; }
+.time { font-variant-numeric: tabular-nums; font-weight: 600; color: $ink-soft; padding-top: 2px; text-align: right; font-size: $fs-sm; }
+.spine { position: relative; display: flex; justify-content: center; align-self: stretch;
+  &::before { content: ""; position: absolute; top: 0; bottom: -24px; width: 2px; background: $line; }
+}
+.event:last-child .spine::before { display: none; }
+
+  
+  
+.detail { padding-bottom: $s6;
+  h3 { font-size: $fs-md; }
+  .dur { color: $muted; font-size: $fs-xs; }
+}
+.footer { text-align: center; margin-top: $s8; padding-top: $s6; border-top: 1px solid $line; color: $muted;
+  p { font-size: $fs-sm; margin-top: $s3; }
+}
+
+.node {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: $card; border: 1px solid $line; color: $clay;
+  display: grid; place-items: center; z-index: 1; box-shadow: 0 0 0 5px $ivory;
+  margin-top: -2px;
+  svg { width: 17px; height: 17px; }
+}

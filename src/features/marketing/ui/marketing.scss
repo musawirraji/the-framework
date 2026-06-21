@@ -1,0 +1,283 @@
+// =============================================================================
+// The Framework — landing v2 "Editorial Motion" (single global sheet, tf-*).
+// Archivo (display) + Space Mono (labels/body). Ember accent. Warm COLOR photos.
+// Inspired by Agentura's grammar + the Lunar draggable explorer — all original.
+// =============================================================================
+
+.tf-mkt {
+  --ember: #{$clay};
+  --paper: #{$ivory};
+  --paper-2: #{$cream};
+  --ink: #{$ink};
+  --line: #{$line};
+  font-family: $font-mono;
+  color: $ink;
+  background: $ivory;
+  overflow-x: clip;
+
+  &__wrap { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 28px;
+    @media (max-width: 600px){ padding-inline: 18px; } }
+}
+
+// ---- type roles -------------------------------------------------------------
+.tf-display { font-family: $font-display; font-weight: 800; text-transform: uppercase;
+  letter-spacing: -0.02em; line-height: 0.92; margin: 0; }
+.tf-mono { font-family: $font-mono; text-transform: uppercase; letter-spacing: 0.14em;
+  font-size: 0.7rem; line-height: 1.5; color: $ink-soft; }
+.tf-mono--dim { color: $muted; }
+.tf-accent { color: $clay; }
+
+// ---- wordmark ---------------------------------------------------------------
+.tf-wordmark { font-family: $font-display; font-weight: 800; letter-spacing: -0.02em;
+  text-transform: uppercase; font-size: 1.05rem; color: $ink; }
+
+// ---- corner registration brackets ------------------------------------------
+.tf-frame { position: relative; display: inline-block;
+  &__c { position: absolute; width: 9px; height: 9px; border: 1px solid currentColor; opacity: .55; }
+  &__c--tl { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+  &__c--tr { top: -1px; right: -1px; border-left: 0; border-bottom: 0; }
+  &__c--bl { bottom: -1px; left: -1px; border-right: 0; border-top: 0; }
+  &__c--br { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+}
+
+// ---- geometric field --------------------------------------------------------
+.tf-geo { position: absolute; inset: 0; width: 100%; height: 100%; color: currentColor;
+  pointer-events: none; opacity: .5; }
+
+// ---- buttons ----------------------------------------------------------------
+.tf-btn { display: inline-flex; align-items: center; gap: 12px; font-family: $font-mono;
+  text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.78rem; font-weight: 700;
+  padding: 14px 22px; cursor: pointer; border: 1px solid transparent; text-decoration: none;
+  transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  svg { width: 16px; height: 16px; }
+  &:focus-visible { outline: none; box-shadow: 0 0 0 2px $ivory, 0 0 0 4px $clay; }
+  &--primary { background: $clay; color: #fff; &:hover { background: $clay-deep; transform: translateY(-1px); } }
+  &--dark { background: $ink; color: $ivory; &:hover { transform: translateY(-1px); } }
+  &--ghost { background: transparent; color: currentColor; border-color: currentColor;
+    &:hover { background: currentColor; } }
+  &--ghost:hover { color: $ivory; }
+  &--light { background: transparent; color: #fff; border-color: rgba(255,255,255,.5);
+    &:hover { background: #fff; color: $ink; } }
+}
+
+// ---- photo helper (warm color, graceful fallback) ---------------------------
+%tf-photo { background-color: $cream;
+  background-image: linear-gradient(135deg, $blush, $cream 60%, #d2cdc3);
+  background-size: cover; background-position: center; background-repeat: no-repeat; }
+
+// ---- corner notes (the framing micro-copy) ----------------------------------
+.tf-notes { position: absolute; inset: 0; pointer-events: none; z-index: 4;
+  span { position: absolute; max-width: 22ch; }
+  &__tl { top: 26px; left: 28px; }
+  &__tr { top: 26px; right: 28px; text-align: right; }
+  &__bl { bottom: 26px; left: 28px; }
+  &__br { bottom: 26px; right: 28px; text-align: right; }
+  @media (max-width: 700px){ &__tr, &__br, &__bl { display: none; } }
+}
+
+// ---- NAV (sticky centered pill) ---------------------------------------------
+.tf-nav { position: fixed; top: 18px; left: 0; right: 0; z-index: 60; display: flex; justify-content: center;
+  pointer-events: none;
+  &__pill { pointer-events: auto; display: flex; align-items: center; gap: 18px;
+    background: $ink; color: $ivory; border-radius: 4px; padding: 10px 12px 10px 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+  &__mark { font-family: $font-display; font-weight: 900; letter-spacing: -0.04em; font-size: 1.05rem; color: #fff; }
+  &__toggle { width: 34px; height: 30px; border: 0; background: rgba(255,255,255,.12); color: #fff;
+    border-radius: 3px; display: grid; place-items: center; cursor: pointer;
+    span { display: block; width: 15px; height: 1.5px; background: #fff; position: relative;
+      &::before, &::after { content: ""; position: absolute; left: 0; width: 15px; height: 1.5px; background: #fff; }
+      &::before { top: -4px; } &::after { top: 4px; } } }
+}
+// full-screen menu overlay
+.tf-menu { position: fixed; inset: 0; z-index: 59; background: $ink; color: $ivory;
+  display: flex; flex-direction: column; justify-content: center; padding: 8vw;
+  opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility .35s ease;
+  &--open { opacity: 1; visibility: visible; }
+  nav { display: flex; flex-direction: column; gap: clamp(2px, 1vh, 10px); align-items: flex-start; }
+  a { display: block; font-family: $font-display; font-weight: 800; text-transform: uppercase; font-size: clamp(2rem,7vw,4.5rem);
+    line-height: 1.05; color: $ivory; opacity: .55; transition: opacity .2s ease, color .2s ease;
+    &:hover { opacity: 1; color: $clay; } }
+  &__close { position: absolute; top: 22px; right: 28px; background: none; border: 0; color: $ivory;
+    font-family: $font-mono; text-transform: uppercase; letter-spacing: .1em; font-size: .8rem; cursor: pointer; }
+}
+
+// ---- HERO (backdrop + centered word) --------------------------------------
+.tf-hero { position: relative; height: 100vh; overflow: hidden; display: grid; place-items: center;
+  background: $ink; color: $ink; }
+.tf-hero__photo { position: absolute; inset: 0; z-index: 0; will-change: transform;
+  background-image: var(--hero-img, linear-gradient(135deg,#caa,#a86));
+  background-size: cover; background-position: center; }
+.tf-hero__veil { position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(231,227,221,.34) 0%, rgba(231,227,221,.12) 38%, rgba(231,227,221,.5) 100%); }
+.tf-hero__geo { position: absolute; top: 50%; left: 50%; width: min(118vh, 1080px); aspect-ratio: 1;
+  transform: translate(-50%,-50%); color: $ink; opacity: .4; z-index: 2; }
+.tf-hero__title { position: relative; z-index: 3; text-align: center; font-family: $font-display;
+  font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; line-height: .86; color: $ink;
+  font-size: clamp(2.6rem, 11vw, 9rem); text-shadow: 0 2px 50px rgba(231,227,221,.85); pointer-events: none; }
+.tf-hero__cta { position: absolute; z-index: 5; bottom: 28px; left: 28px; display: flex; gap: 10px;
+  @media (max-width: 600px){ left: 18px; right: 18px; } }
+
+// ---- EXPLORER (draggable day) ----------------------------------------------
+.tf-explore { position: relative; background: $ink; color: $ivory; overflow: hidden;
+  height: 86vh; min-height: 620px; user-select: none;
+  &__head { position: absolute; top: 22px; left: 0; right: 0; z-index: 5; text-align: center; }
+  &__hint { color: rgba(231,227,221,.6); }
+  &__viewport { position: absolute; inset: 0; cursor: grab; touch-action: none;
+    &:active { cursor: grabbing; } }
+  &__canvas { position: absolute; top: 50%; left: 50%; width: 2200px; height: 1300px;
+    transform: translate(-50%,-50%); will-change: transform;
+    background-image: var(--explore-bg, radial-gradient(circle at 50% 40%, #2a2522, #161310 70%)); }
+  &__marker { position: absolute; display: flex; flex-direction: column; gap: 8px; width: 150px;
+    color: $ivory; transition: transform .3s ease; }
+  &__thumb { @extend %tf-photo; width: 150px; aspect-ratio: 4/5; border-radius: 2px;
+    background-image: var(--m-img, linear-gradient(135deg,#3a322c,#241f1b)); position: relative; }
+  &__mlabel { display: flex; justify-content: space-between; gap: 8px; }
+  &__mtime { color: $clay; }
+  &__marker--active { transform: scale(1.06); }
+  // bottom scrubber
+  &__scrub { position: absolute; left: 0; right: 0; bottom: 0; z-index: 6; background: rgba(22,19,16,.7);
+    backdrop-filter: blur(8px); border-top: 1px solid rgba(255,255,255,.12); padding: 14px 24px 18px; }
+  &__track { position: relative; height: 30px; }
+  &__ticks { display: flex; justify-content: space-between; }
+  &__tick { color: rgba(231,227,221,.5); font-family: $font-mono; font-size: .62rem; letter-spacing: .08em; }
+  &__progress { position: absolute; top: 22px; left: 0; height: 2px; background: $clay; transition: width .1s linear; }
+}
+
+// ---- PINNED BLOCK (problem + how) ------------------------------------------
+.tf-block { position: relative; min-height: 100vh; display: flex; align-items: center;
+  overflow: hidden; color: #fff;
+  &__photo { @extend %tf-photo; position: absolute; inset: -12% 0; z-index: 0; will-change: transform;
+    background-image: var(--block-img, linear-gradient(135deg,#5a4a3e,#2a211a)); }
+  &__scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(22,19,16,.66) 0%, rgba(22,19,16,.2) 60%, rgba(22,19,16,.5) 100%); }
+  &__bar { position: relative; z-index: 3; width: 100%; max-width: 1280px; margin-inline: auto;
+    padding-inline: 28px; display: grid; gap: 20px; align-items: end;
+    @media (min-width: 860px){ grid-template-columns: 1fr 1fr; } @media (max-width: 600px){ padding-inline: 18px; } }
+  &__num { font-family: $font-mono; color: $clay; letter-spacing: .12em; }
+  &__statement { font-family: $font-mono; text-transform: uppercase; letter-spacing: .04em;
+    font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.86); max-width: 32ch; margin-top: 10px; }
+  &__label { font-family: $font-mono; text-transform: uppercase; letter-spacing: .14em; font-size: .72rem;
+    color: rgba(255,255,255,.6); }
+  &__title { font-family: $font-display; font-weight: 800; text-transform: uppercase; color: #fff;
+    font-size: clamp(2.4rem, 6vw, 5rem); line-height: .92; text-align: right; }
+  &--light { color: $ink; .tf-block__scrim { background: linear-gradient(90deg, rgba(231,227,221,.7), rgba(231,227,221,.2)); }
+    .tf-block__title { color: $ink; } .tf-block__statement { color: $ink-soft; } .tf-block__label { color: $muted; } }
+}
+
+// ---- STICKY STACK (sections cover each other on scroll) --------------------
+.tf-stack { position: relative; }
+.tf-stack > .tf-block { position: sticky; top: 0; box-shadow: 0 -40px 80px rgba(22,19,16,.35); }
+@include reduced-motion { .tf-stack > .tf-block { position: relative; box-shadow: none; } }
+
+// ---- ZOOM-COVER (each panel scales up to fill + cover the previous) ---------
+.tf-zoom { position: relative; }
+.tf-zoom__panel { position: relative; min-height: 100vh; display: flex; align-items: flex-end;
+  overflow: hidden; color: #fff; }
+.tf-zoom--anim { height: 100vh; overflow: hidden; }
+.tf-zoom--anim .tf-zoom__panel { position: absolute; inset: 0; min-height: 0; }
+.tf-zoom__card { position: absolute; inset: 0; z-index: 0; transform-origin: center center;
+  will-change: transform; overflow: hidden; }
+.tf-zoom__img { position: absolute; inset: 0;
+  background-image: var(--zoom-img, linear-gradient(135deg,#5a4a3e,#2a211a));
+  background-size: cover; background-position: center; }
+.tf-zoom__scrim { position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(22,19,16,.62) 0%, rgba(22,19,16,.15) 55%, rgba(22,19,16,.45) 100%); }
+.tf-zoom--light .tf-zoom__scrim { background: linear-gradient(90deg, rgba(231,227,221,.7), rgba(231,227,221,.2)); }
+.tf-zoom__bar { position: relative; z-index: 2; width: 100%; max-width: 1280px; margin-inline: auto;
+  padding: 0 28px 9vh; display: grid; gap: 20px; align-items: end;
+  @media (min-width: 860px){ grid-template-columns: 1fr 1fr; } @media (max-width: 600px){ padding-inline: 18px; } }
+.tf-zoom__num { font-family: $font-mono; color: $clay; letter-spacing: .12em; font-size: .8rem; }
+.tf-zoom__statement { font-family: $font-mono; text-transform: uppercase; letter-spacing: .04em;
+  font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.88); max-width: 32ch; margin-top: 10px; }
+.tf-zoom__label { font-family: $font-mono; text-transform: uppercase; letter-spacing: .14em; font-size: .72rem;
+  color: rgba(255,255,255,.6); }
+.tf-zoom__title { font-family: $font-display; font-weight: 800; text-transform: uppercase; color: #fff;
+  font-size: clamp(2.4rem, 6vw, 5rem); line-height: .92; text-align: right; }
+.tf-zoom--light { color: $ink;
+  .tf-zoom__statement { color: $ink-soft; } .tf-zoom__label { color: $muted; } .tf-zoom__title { color: $ink; } }
+
+// ---- SAMPLE (engine output) -------------------------------------------------
+.tf-engine { background: $ink; color: $ivory; padding: 120px 0; position: relative; overflow: hidden;
+  &__grid { display: grid; gap: 48px; align-items: center; @media (min-width: 940px){ grid-template-columns: .8fr 1.2fr; gap: 72px; } }
+  &__label { color: $clay; }
+  &__title { font-size: clamp(2.4rem,6vw,4.5rem); color: #fff; margin: 14px 0 0; }
+  &__lead { color: rgba(231,227,221,.72); margin-top: 22px; font-family: $font-mono; font-size: .82rem; line-height: 1.7; }
+  &__list { border-top: 1px solid rgba(255,255,255,.14); }
+  &__row { display: grid; grid-template-columns: 92px 1fr auto; align-items: center; gap: 18px;
+    padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+  &__t { font-family: $font-mono; color: $clay; font-size: .82rem; }
+  &__name { font-family: $font-mono; text-transform: uppercase; letter-spacing: .06em; font-size: .82rem; }
+  &__dur { font-family: $font-mono; color: rgba(231,227,221,.5); font-size: .7rem; }
+}
+
+// ---- GALLERY (stacked centered reveals) ------------------------------------
+.tf-coll { padding: 120px 0; background: $ivory;
+  &__head { text-align: center; margin-bottom: 48px; }
+  &__title { font-size: clamp(2.6rem,7vw,5.5rem); }
+  &__stack { display: flex; flex-direction: column; align-items: center; gap: 64px; }
+  &__shot { @extend %tf-photo; width: min(74vw, 560px); aspect-ratio: 4/5; border-radius: 2px;
+    background-image: var(--shot-img, linear-gradient(135deg,#caa,#a86)); position: relative; will-change: transform; }
+  &__cap { position: absolute; left: 14px; bottom: 12px; color: #fff; font-family: $font-mono;
+    text-transform: uppercase; letter-spacing: .1em; font-size: .68rem; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+}
+
+// ---- PROOF (dark testimonial) ----------------------------------------------
+.tf-proof { background: $ink; color: $ivory; padding: 120px 0; position: relative; overflow: hidden;
+  &__title { font-size: clamp(2.4rem,6vw,4.5rem); color: #fff; max-width: 14ch; }
+  &__grid { display: grid; gap: 40px; align-items: center; margin-top: 48px;
+    @media (min-width: 860px){ grid-template-columns: 1.3fr .7fr; } }
+  &__main { @extend %tf-photo; aspect-ratio: 7/8; border-radius: 2px; background-image: var(--proof-img, linear-gradient(135deg,#3a322c,#241f1b)); }
+  &__side { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  &__s { @extend %tf-photo; aspect-ratio: 4/5; border-radius: 2px; }
+  &__quote { font-family: $font-mono; text-transform: uppercase; letter-spacing: .04em; line-height: 1.6;
+    font-size: .92rem; color: rgba(231,227,221,.88); margin: 40px 0 0; max-width: 60ch; }
+  &__who { color: $clay; margin-top: 14px; }
+}
+
+// ---- PRICING ----------------------------------------------------------------
+.tf-price { padding: 120px 0; background: $ivory;
+  &__head { margin-bottom: 48px; }
+  &__title { font-size: clamp(2.4rem,6vw,4.5rem); margin-top: 12px; }
+  &__grid { border: 1px solid $ink;
+    @media (min-width: 820px){ display: grid; grid-template-columns: repeat(3,1fr); } }
+  &__plan { padding: 36px 30px; border-bottom: 1px solid $ink;
+    @media (min-width: 820px){ border-bottom: 0; border-left: 1px solid $ink; &:first-child { border-left: 0; } }
+    &--featured { background: $ink; color: $ivory; } }
+  &__name { font-family: $font-display; font-weight: 800; text-transform: uppercase; font-size: 1.5rem; }
+  &__price { font-family: $font-display; font-weight: 800; font-size: 2.6rem; margin: 16px 0 4px;
+    span { font-family: $font-mono; font-size: .8rem; font-weight: 400; } }
+  &__feat { list-style: none; margin: 18px 0 26px; padding: 0;
+    li { font-family: $font-mono; font-size: .74rem; text-transform: uppercase; letter-spacing: .06em;
+      padding: 7px 0; border-top: 1px solid rgba(0,0,0,.12); } }
+  &__plan--featured &__feat li { border-top-color: rgba(255,255,255,.16); }
+  &__note { text-align: center; color: $muted; font-family: $font-mono; font-size: .72rem; margin-top: 26px; }
+}
+
+// ---- CTA --------------------------------------------------------------------
+.tf-cta { position: relative; min-height: 86vh; display: flex; align-items: center; overflow: hidden; color: #fff;
+  &__photo { @extend %tf-photo; position: absolute; inset: -10% 0; z-index: 0; will-change: transform;
+    background-image: linear-gradient(90deg, rgba(22,19,16,.6), rgba(22,19,16,.15)), var(--cta-img, linear-gradient(135deg,#5a4a3e,#2a211a)); }
+  &__inner { position: relative; z-index: 3; width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 28px;
+    @media (max-width:600px){ padding-inline: 18px; } }
+  &__title { font-family: $font-display; font-weight: 900; text-transform: uppercase; color: #fff;
+    font-size: clamp(2.6rem,8vw,6.5rem); line-height: .9; max-width: 14ch; }
+  &__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+}
+
+// ---- FOOTER -----------------------------------------------------------------
+.tf-foot { background: $ink; color: rgba(231,227,221,.7); padding: 80px 0 40px; overflow: hidden;
+  &__word { font-family: $font-display; font-weight: 900; text-transform: uppercase; color: $ivory;
+    font-size: clamp(3rem, 18vw, 16rem); line-height: .82; letter-spacing: -0.03em; white-space: nowrap; margin: 0 0 40px; }
+  &__row { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,.12); padding-top: 26px; }
+  &__nav { display: flex; flex-wrap: wrap; gap: 22px;
+    a { font-family: $font-mono; text-transform: uppercase; letter-spacing: .1em; font-size: .72rem;
+      color: rgba(231,227,221,.7); &:hover { color: #fff; } } }
+  &__legal { font-family: $font-mono; font-size: .68rem; letter-spacing: .08em; color: rgba(231,227,221,.45); }
+}
+
+// ---- reveal -----------------------------------------------------------------
+.tf-reveal { opacity: 0; transform: translateY(26px);
+  transition: opacity .9s cubic-bezier(.16,.84,.44,1), transform .9s cubic-bezier(.16,.84,.44,1); }
+.tf-reveal.is-shown { opacity: 1; transform: none; }
+@include reduced-motion { .tf-reveal { opacity: 1; transform: none; }
+  .tf-geo, .tf-hero__geo { opacity: .35 !important; } }

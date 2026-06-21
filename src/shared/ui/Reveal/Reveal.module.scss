@@ -1,0 +1,7 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s cubic-bezier(.16,.84,.44,1), transform .7s cubic-bezier(.16,.84,.44,1);
+}
+.shown { opacity: 1; transform: translateY(0); }
+@include reduced-motion { .reveal { opacity: 1; transform: none; } }

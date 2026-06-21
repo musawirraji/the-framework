@@ -1,0 +1,13 @@
+.shell { min-height: 100vh; background: $ivory; }
+.topbar { position: sticky; top: 0; z-index: 40; background: rgba(250,246,240,.9);
+  backdrop-filter: blur(10px); border-bottom: 1px solid $line; }
+.inner { @include container(1120px); height: 64px; display: flex; align-items: center; gap: $s6; }
+.nav { display: flex; gap: $s5; margin-left: $s4; font-size: $fs-sm; color: $ink-soft;
+  a { padding: $s2 0; &:hover { color: $ink; } }
+}
+.right { margin-left: auto; display: flex; align-items: center; gap: $s4; }
+.who { font-size: $fs-sm; color: $muted; display: none; @media (min-width:600px){ display: inline; } }
+.signout { background: none; border: 1px solid $line; border-radius: $r-pill; padding: $s2 $s4;
+  font-size: $fs-sm; color: $ink-soft; cursor: pointer; @include focus-ring;
+  &:hover { border-color: $ink; color: $ink; } }
+.main { @include container(1120px); padding-block: $s7; }
