@@ -1,5 +1,6 @@
 import "../marketing.scss";
 import { SmoothScroll } from "../motion/SmoothScroll";
+import { Loader } from "../components/Loader";
 import { Nav } from "../sections/Nav";
 import { Hero } from "../sections/Hero";
 import { ZoomStack, type ZoomPanel } from "../components/ZoomStack";
@@ -27,7 +28,9 @@ const PANELS: ZoomPanel[] = [
 
 export function MarketingScreen() {
   return (
-    <SmoothScroll>
+    <>
+      <Loader />
+      <SmoothScroll>
       <div className="tf-mkt">
         <Nav />
         <main>
@@ -41,6 +44,7 @@ export function MarketingScreen() {
         </main>
         <Footer />
       </div>
-    </SmoothScroll>
+      </SmoothScroll>
+    </>
   );
 }
