@@ -172,7 +172,7 @@
 .tf-zoom { position: relative; }
 .tf-zoom__panel { position: relative; min-height: 100vh; display: flex; align-items: flex-end;
   overflow: hidden; color: #fff; }
-.tf-zoom--anim { height: 100vh; overflow: hidden; }
+.tf-zoom--anim { height: 100vh; height: 100svh; overflow: hidden; }
 .tf-zoom--anim .tf-zoom__panel { position: absolute; inset: 0; min-height: 0; }
 .tf-zoom__card { position: absolute; inset: 0; z-index: 0; transform-origin: center center;
   will-change: transform; overflow: hidden; }

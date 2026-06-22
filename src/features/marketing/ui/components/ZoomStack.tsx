@@ -14,9 +14,10 @@ export function ZoomStack({ panels }: { panels: ZoomPanel[] }) {
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || window.innerWidth < 760) return; // static stacked fallback (base CSS)
+    if (reduce) return; // honor reduced-motion; otherwise run on mobile too
 
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true }); // ignore address-bar show/hide on mobile
     const el = root.current!;
     el.classList.add("tf-zoom--anim");
 
