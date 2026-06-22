@@ -1,0 +1,31 @@
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#e7e3dd;margin:0;padding:32px 0;font-family:Helvetica,Arial,sans-serif;">
+  <tr><td align="center">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#fffdf9;border:1px solid #d3ccc0;border-radius:6px;overflow:hidden;">
+      <tr><td style="background:#161310;padding:22px 32px;">
+        <span style="font-family:Georgia,'Times New Roman',serif;font-weight:bold;font-size:18px;letter-spacing:0.5px;color:#ffffff;text-transform:uppercase;">The&nbsp;Framework</span>
+      </td></tr>
+      <tr><td style="padding:40px 32px 8px;">
+        <p style="margin:0 0 6px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#d8492c;font-weight:bold;">Confirm your email</p>
+        <h1 style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.2;color:#161310;">Claim your founding seat</h1>
+        <p style="margin:0 0 28px;font-size:15px;line-height:1.65;color:#574e44;">You're one click from a calmer wedding season. Confirm your email to activate your studio account and start turning intake forms into finished timelines.</p>
+            <table role="presentation" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="border-radius:999px;background:#d8492c;">
+                  <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next=/dashboard"
+                     style="display:inline-block;padding:14px 30px;font-size:14px;font-weight:bold;letter-spacing:0.5px;text-transform:uppercase;color:#ffffff;text-decoration:none;border-radius:999px;">
+                    Confirm &amp; sign in &rarr;
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+            <p style="margin:28px 0 0;font-size:13px;line-height:1.6;color:#8f8475;">If the button doesn't work, paste this link into your browser:</p>
+            <p style="margin:6px 0 0;font-size:12px;line-height:1.5;word-break:break-all;"><a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next=/dashboard" style="color:#d8492c;">{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next=/dashboard</a></p>
+      </td></tr>
+      <tr><td style="padding:32px;border-top:1px solid #d3ccc0;">
+        <p style="margin:0;font-size:12px;line-height:1.6;color:#8f8475;">You're receiving this because someone signed up for The Framework with this email. If it wasn't you, ignore it — no account will be created.</p>
+        <p style="margin:16px 0 0;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#b7ad9e;">The Framework · Wedding day timelines, generated in minutes</p>
+      </td></tr>
+    </table>
+  </td></tr>
+</table>

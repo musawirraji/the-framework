@@ -9,7 +9,7 @@ export default function LoginPage() {
     <AuthScreen
       title="Welcome back"
       subtitle="Log in to your studio dashboard."
-      footer={<>New here? <Link href="/signup">Create an account</Link></>}
+      footer={<><Link href="/forgot-password">Forgot password?</Link> · New here? <Link href="/signup">Create an account</Link></>}
     >
       <SignInForm />
     </AuthScreen>

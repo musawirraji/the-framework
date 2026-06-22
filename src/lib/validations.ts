@@ -52,3 +52,10 @@ export function fieldErrors(error: z.ZodError): Record<string, string[]> {
   for (const [k, v] of Object.entries(flat)) if (v) out[k] = v;
   return out;
 }
+
+export const resetRequestSchema = z.object({
+  email: z.string().trim().email("Enter a valid email"),
+});
+export const passwordUpdateSchema = z.object({
+  password: z.string().min(8, "Use at least 8 characters").max(200),
+});
