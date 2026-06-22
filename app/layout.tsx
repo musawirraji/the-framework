@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, Space_Mono, DM_Sans } from "next/font/google";
+import { Archivo, Space_Mono, DM_Sans, Great_Vibes } from "next/font/google";
 import "@/styles/globals.scss";
 
 // v2 "Editorial Motion": Archivo (heavy grotesque display) + Space Mono (labels/
@@ -22,6 +22,13 @@ const sans = DM_Sans({
   variable: "--font-sans",
   display: "swap",
 });
+// Signature script — used only by the intro loader.
+const script = Great_Vibes({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-script",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "The Framework — Wedding timelines, generated in minutes",
@@ -32,7 +39,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${mono.variable} ${sans.variable}`}>
+    <html lang="en" className={`${display.variable} ${mono.variable} ${sans.variable} ${script.variable}`}>
       <body>{children}</body>
     </html>
   );
